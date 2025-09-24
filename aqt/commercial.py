@@ -379,7 +379,8 @@ class CommercialInstaller:
                         # Replace .arm64 with empty string for the x86 mac installer on arm
                         if cmd_arg.endswith(".arm64"):
                             cmd_arg = cmd_arg.replace(".arm64", ".clang_644")
-                            new_install_cmd.append(cmd_arg)
+
+                        new_install_cmd.append(cmd_arg)
                     install_cmd = new_install_cmd
                 cmd = [*base_cmd, *install_cmd]
 
