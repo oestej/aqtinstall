@@ -373,11 +373,14 @@ class CommercialInstaller:
 
                 install_cmd = self.package_manager.get_install_command(self.modules, temp_dir)
                 if re.match(r".*mac-x64.*", self._installer_filename):
+                    self.logger.info("Using x86 mac installer on arm")
+                    new_install_cmd = []
                     for cmd_arg in install_cmd:
                         # Replace .arm64 with empty string for the x86 mac installer on arm
                         if cmd_arg.endswith(".arm64"):
                             cmd_arg = cmd_arg.replace(".arm64", ".clang_644")
-
+                            new_install_cmd.append(cmd_arg)
+                    install_cmd = new_install_cmd
                 cmd = [*base_cmd, *install_cmd]
 
             log_cmd = cmd.copy()
