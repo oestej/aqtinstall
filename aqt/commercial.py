@@ -376,9 +376,9 @@ class CommercialInstaller:
                     self.logger.info("Using x86 mac installer on arm")
                     new_install_cmd = []
                     for cmd_arg in install_cmd:
-                        # Replace .arm64 with empty string for the x86 mac installer on arm
+                        # Replace .arm64 with .clang_64 string for the x86 mac installer on arm
                         if cmd_arg.endswith(".arm64"):
-                            cmd_arg = cmd_arg.replace(".arm64", ".clang_644")
+                            cmd_arg = cmd_arg.replace(".arm64", ".clang_64")
 
                         new_install_cmd.append(cmd_arg)
                     install_cmd = new_install_cmd
